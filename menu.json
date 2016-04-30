@@ -1,0 +1,25 @@
+{
+  "pizzas": [
+    {
+      "name": "Margherita",
+      "description": "The queen of pizzas",
+      "ingredients": "Mozzarella Cheese, Tomato Sauce",
+      "price": "15$",
+      "id": 1
+    },
+    {
+      "name": "Hawaiian",
+      "description": "Surf pizza star",
+      "ingredients": "Ham, Pineapple",
+      "price": "12$",
+      "id": 2
+    },
+    {
+      "name": "Farmhouse",
+      "description": "A real cowboy pizza",
+      "ingredients": "Ham, Mushrooms",
+      "price": "17$",
+      "id": 3
+    }
+  ]
+}
