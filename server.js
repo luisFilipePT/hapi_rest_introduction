@@ -5,6 +5,9 @@
 
 const Hapi = require('hapi');
 
+// Require our json file / "database" controller
+var menuController = require('./db_menu_controller');
+
 // Create a new server instance
 const server = new Hapi.Server();
 
@@ -20,7 +23,7 @@ server.route({
     path: '/menu',
     config: {
         handler: function (request, reply) {
-            return reply({result: 'Pizza API listened to your request'});
+            return reply(menuController.getPizzas(request.query));
         }
     }
 });
@@ -31,7 +34,7 @@ server.route({
     path: '/menu/{pizzaId}',
     config: {
         handler: function (request, reply) {
-            return reply({result: 'So you will want a certain pizza here. OK'});
+            return reply(menuController.getPizzaById(request.params.pizzaId));
         }
     }
 });
@@ -42,7 +45,7 @@ server.route({
     path: '/menu',
     config: {
         handler: function (request, reply) {
-            return reply({result: 'New pizzas!!!'});
+            return reply(menuController.postNewPizza(request.payload));
         }
     }
 });
@@ -53,7 +56,7 @@ server.route({
     path: '/menu/{pizzaId}',
     config: {
         handler: function (request, reply) {
-            return reply({result: 'Whant to change the pizza??, no problem!'});
+            return reply(menuController.putUpdatePizza(request.params.pizzaId, request.payload));
         }
     }
 });
@@ -64,7 +67,7 @@ server.route({
     path: '/menu/{pizzaId}',
     config: {
         handler: function (request, reply) {
-            return reply({result: 'Remove that old pizza men!'});
+            return reply(menuController.deleteRemovePizza(request.params.pizzaId));
         }
     }
 });
